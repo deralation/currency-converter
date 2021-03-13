@@ -1,0 +1,35 @@
+version: '3'
+services: 
+  nginx:
+    container_name: nginx-container
+    build:
+      context: ./environment/nginx
+      dockerfile: nginx.Dockerfile
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./currency-converter:/var/www/html/currency-converter
+  php: 
+    container_name: php-container
+    image: php:8.0-fpm
+    ports:
+      - 9000:9000
+    volumes:
+      - ./currency-converter:/var/www/html/currency-converter
+  mysql:
+    container_name: mysql-container
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+  composer: 
+    container_name: composer-container
+    image: composer:2.0.4
+    working_dir: /var/www/html/currency-converter
+    volumes:
+      - ./currency-converter:/var/www/html/currency-converter
+    command: install --ignore-platform-reqs --no-scripts
+    
