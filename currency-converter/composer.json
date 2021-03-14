@@ -1,0 +1,36 @@
+{
+	"name": "currency/converter",
+	"description": "currency converter",
+	"version": "1.0.0",
+	"type": "project",
+	"license": "proprietary",
+    "authors": [
+        {
+            "name": "Gökhan Derala",
+            "email": "gderala@gmail.com"
+        }
+    ],
+    "config": {
+        "notify-on-install": false,
+        "platform": {
+            "php": "8.0"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": { 
+            "": "classes/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "6.5.2",
+        "phroute/phroute": "2.1.0",
+        "devster/ubench": "2.1.0",
+        "robmorgan/phinx": "0.12.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.2.5",
+        "odan/phinx-migrations-generator": "5.1.0"
+    }
+}
