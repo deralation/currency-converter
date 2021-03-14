@@ -19,17 +19,29 @@ services:
       - ./currency-converter:/var/www/html/currency-converter
   mysql:
     container_name: mysql-container
-    image: mysql:8.0
+    build:
+      context: ./environment/mysql
+      dockerfile: mysql.Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_ROOT_HOST: '%'
     ports:
       - "3306:3306"
+    cap_add:
+      - SYS_NICE
   composer: 
     container_name: composer-container
     image: composer:2.0.4
     working_dir: /var/www/html/currency-converter
     volumes:
       - ./currency-converter:/var/www/html/currency-converter
-    command: install --ignore-platform-reqs --no-scripts
-    
+    command: update --ignore-platform-reqs --no-scripts
+  migration:
+    container_name: migration_container
+    build: 
+      context: './environment/migration/'
+      dockerfile: migration.Dockerfile
+    depends_on: 
+      - mysql
+      - php
+      - composer

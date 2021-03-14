@@ -1,0 +1,36 @@
+paths:
+    migrations: '%%PHINX_CONFIG_DIR%%/db/migrations'
+    seeds: '%%PHINX_CONFIG_DIR%%/db/seeds'
+
+environments:
+    default_migration_table: Migrations
+    default_environment: development
+    
+    production:
+        adapter: mysql
+        host: '%%PHINX_PRODUCTION_DBHOST%%'
+        name: '%%PHINX_PRODUCTION_DBNAME%%'
+        user: '%%PHINX_PRODUCTION_DBUSER%%'
+        pass: '%%PHINX_PRODUCTION_DBPASS%%'
+        port: 3306
+        charset: utf8
+
+    development:
+        adapter: mysql
+        host: mysql
+        name: test_currency_conventer
+        user: root
+        pass: 'root'
+        port: 3306
+        charset: utf8
+
+    staging:
+        adapter: mysql
+        host: '%%PHINX_STAGING_DBHOST%%'
+        name: '%%PHINX_STAGING_DBNAME%%'
+        user: '%%PHINX_STAGING_DBUSER%%'
+        pass: '%%PHINX_STAGING_DBPASS%%'
+        port: 3306
+        charset: utf8
+
+version_order: creation
