@@ -12,6 +12,9 @@ services:
       - ./currency-converter:/var/www/html/currency-converter
   php: 
     container_name: php-container
+    build: 
+      context: ./environment/php
+      dockerfile: php.Dockerfile
     image: php:8.0-fpm
     ports:
       - 9000:9000
@@ -35,7 +38,7 @@ services:
     working_dir: /var/www/html/currency-converter
     volumes:
       - ./currency-converter:/var/www/html/currency-converter
-    command: update --ignore-platform-reqs --no-scripts
+    command: install --ignore-platform-reqs --no-scripts
   migration:
     container_name: migration_container
     build: 

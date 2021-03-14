@@ -18,7 +18,7 @@ environments:
     development:
         adapter: mysql
         host: mysql
-        name: test_currency_conventer
+        name: test_currency_converter
         user: root
         pass: 'root'
         port: 3306

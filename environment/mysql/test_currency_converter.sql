@@ -10,10 +10,9 @@ DROP TABLE IF EXISTS `Converters`;
 CREATE TABLE `Converters`(
 	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`date` datetime DEFAULT NULL,
-	`source-currency` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-	`target-currency` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-	`rate` FLOAT DEFAULT NULL,
-	`amount` FLOAT DEFAULT NULL
+	`sourceCurrency` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+	`targetCurrency` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+	`rate` FLOAT DEFAULT NULL
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8
