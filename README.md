@@ -15,9 +15,6 @@
 *docker-compose up* to start the local environment services
 
 *App Running*
-To run project under project directory run following docker compose command
->docker-compose up
-
 To convert currency request converter.php endpoint with required parameters; action, sourceCurrency, targetCurrency and sourceAmount parameter
 >http://local.currency-converter.com/api/v1/converter.php?action=getExchangeRate&sourceCurrency=DKK&targetCurrency=USD&sourceAmount=60
 
