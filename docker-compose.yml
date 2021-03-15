@@ -44,6 +44,8 @@ services:
     build: 
       context: './environment/migration/'
       dockerfile: migration.Dockerfile
+    volumes:
+      - ./currency-converter:/var/www/html/currency-converter
     depends_on: 
       - mysql
       - php
