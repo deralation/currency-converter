@@ -68,12 +68,12 @@ class Converter {
 
       $return = json_decode($json);
       $data = json_decode(json_encode($return), true);
-
+ 
       $amount = $this->calculationOfTargetAmount($data);
       
       $data["rate"] = $amount["rate"];
       $data["targetAmount"] = $amount["amount"];
-
+    
       $currencyData = $this->add($data);
 
       return $currencyData;
@@ -130,8 +130,14 @@ class Converter {
       if(!isset($data["rates"]))  
         throw new Exception("Unknown rates");
 
-      $rate = $data["rates"][$this->sourceCurrency] / $data["rates"][$this->targetCurrency];
-      $value = $this->sourceAmount>$rate?$this->sourceAmount/$rate:$this->sourceAmount*$rate;
+      if(!isset($this->sourceCurrency))
+        throw new Exception("Unknown source currency");
+
+      if(!isset($this->targetCurrency))
+        throw new Exception("Unknown target currency");
+
+      $rate = $data["rates"][$this->sourceCurrency]>$data["rates"][$this->targetCurrency] ? $data["rates"][$this->sourceCurrency] / $data["rates"][$this->targetCurrency]:$data["rates"][$this->targetCurrency]/$data["rates"][$this->sourceCurrency];
+      $value = $this->sourceAmount>$rate ? $this->sourceAmount/$rate:$this->sourceAmount*$rate;
       
       $return = array(
         "rate" => $rate,
