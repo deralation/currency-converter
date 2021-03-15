@@ -13,3 +13,11 @@
 > For mac user *sudo nano /etc/hosts* to add custom local environment domain 127.0.0.1 *local.currency-converter.com*
 
 *docker-compose up* to start the local environment services
+
+*App Running*
+To convert currency request converter.php endpoint with required parameters; action, sourceCurrency, targetCurrency and sourceAmount parameter
+>http://local.currency-converter.com/api/v1/converter.php?action=getExchangeRate&sourceCurrency=DKK&targetCurrency=USD&sourceAmount=60
+
+To run test
+with Docker below command to check target amount test
+>docker exec php-container /var/www/html/currency-converter/vendor/bin/phpunit /var/www/html/currency-converter/tests/ConverterTest.php
