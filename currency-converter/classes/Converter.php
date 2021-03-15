@@ -136,7 +136,7 @@ class Converter {
 		if(!isset($this->targetCurrency))
 			throw new Exception("Unknown target currency");
 
-		$rate = $data["rates"][$this->sourceCurrency]>$data["rates"][$this->targetCurrency] ? $data["rates"][$this->sourceCurrency] / $data["rates"][$this->targetCurrency]:$data["rates"][$this->targetCurrency]/$data["rates"][$this->sourceCurrency];
+		$rate = $data["rates"][$this->sourceCurrency] / $data["rates"][$this->targetCurrency];
 		$value = $this->sourceAmount>$rate ? $this->sourceAmount/$rate:$this->sourceAmount*$rate;
 		
 		$return = array(
